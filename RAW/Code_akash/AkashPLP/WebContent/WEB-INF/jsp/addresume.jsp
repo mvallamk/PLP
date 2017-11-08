@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 <h2>Enter Personal Details</h2>
-<form:form action="addpersonal.htm" modelAttribute="candPers" method="post">
+<form:form action="savepersonal.htm" modelAttribute="candPers" method="post">
 
 <form:label path="candidateName">Name</form:label>
 <form:input path="candidateName"></form:input>
@@ -47,8 +48,12 @@
 <form:errors path="passportNumber"></form:errors><br/>
 
 <button type="submit">Save</button>
+
 </form:form>
 
+
+<%-- <c:if test="${candQual ne null}">
+ --%>
 <h2>Enter Qualification Details</h2>
 <form:form action="addqual.htm" modelAttribute="candQual" method="post">
 <table border="1">
@@ -63,16 +68,17 @@
 <td><form:input path="specializationArea"></form:input><form:errors path="specializationArea"></form:errors></td>
 <td><form:input path="collegeName"></form:input><form:errors path="collegeName"></form:errors></td>
 <td><form:input path="universityName"></form:input><form:errors path="universityName"></form:errors></td>
-<tr><td><form:select path="yearOfPassing"><form:options items="${yearList}"/></form:select><form:errors path="yearOfPassing"></form:errors></td>
+<td><form:select path="yearOfPassing"><form:options items="${yearList}"/></form:select><form:errors path="yearOfPassing"></form:errors></td>
 <td><form:input path="percentage"></form:input><form:errors path="percentage"></form:errors></td>
 </tr>
-
 </table>
-<button type="submit">Save</button>
+<button type="submit">Add More Qualifiction</button>
 </form:form>
 
+
+
 <h2>Enter Work History Details</h2>
-<form:form action="addworkhist.htm" modelAttribute="candWork" method="post">
+<form:form action="saveworkhist.htm" modelAttribute="candWork" method="post">
 <table border="1">
 <tr><th><form:label path="whichEmployer">Qualification</form:label></th>
 <th><form:label path="contactPerson">Specialization Area</form:label></th>

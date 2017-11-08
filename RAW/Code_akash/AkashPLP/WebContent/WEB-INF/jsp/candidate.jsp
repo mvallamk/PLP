@@ -10,7 +10,7 @@
 <h2>Online Recruitment System</h2>
 <table border=1>
 <tr><th>Pick your operation</th></tr>
-<tr><td>1.</td><td><a href="add.htm">Add Resume</a></td></tr>
+<tr><td>1.</td><td><a href="addresumeform.htm">Add Resume</a></td></tr>
 <tr><td>2.</td><td><a href="modify.htm">Modify Resume</a></td></tr>
 <tr><td>3.</td><td><a href="search.htm">Search Jobs</a></td></tr>
 <tr><td>4.</td><td><a href="apply.htm">Apply for Jobs</a></td></tr>
