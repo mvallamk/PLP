@@ -11,7 +11,7 @@
 a { font-size:30px; }
 </style>
 </head>
-<body>
+<body background="bg1.jpg">
 	<h1 style="text-align:center">Login</h1>
 	<p align="center" style="color: Red">${message}</p>
 	<form action="checklogin.htm" method="post">
