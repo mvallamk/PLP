@@ -1,16 +1,14 @@
-package com.cg.recruitment.service;
-
+package com.cg.recruitment.dao;
 
 
 import com.cg.recruitment.entities.Login;
 import com.cg.recruitment.exception.RecruitmentException;
 
-
-public interface IServiceDao {
-
+public interface ILoginDao {
+	
 	
 	public abstract void signUp(Login loginSignup) throws RecruitmentException;
 	public abstract Login getLoginDetails(String loginId);
-	boolean validateLoginDetails(String loginId, String password);
+
 
 }
