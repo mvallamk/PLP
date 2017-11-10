@@ -11,6 +11,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries(value = {@NamedQuery(name = "pos.getAll", query = "select candidateWorkHistory From CandidateWorkHistory candidateWorkHistory  where candidateWorkHistory.positionHeld='se'")})
 
+
 public class CandidateWorkHistory implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
