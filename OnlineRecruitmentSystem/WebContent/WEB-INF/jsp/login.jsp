@@ -9,9 +9,11 @@
 <title>Insert title here</title>
 <style>
 a { font-size:30px; }
+a.two:link {color:#004BAA;}
+a.two:hover {font-size:150%;}
 </style>
 </head>
-<body background="bg1.jpg">
+<body background="images/bg1.jpg">
 	<h1 style="text-align:center">Login</h1>
 	<p align="center" style="color: Red">${message}</p>
 	<form action="checklogin.htm" method="post">
@@ -32,7 +34,7 @@ a { font-size:30px; }
 		</table>
 	</form>
 
-	<a href="showsignupform.htm">Signup</a>
+	<a class="two" href="showsignupform.htm">Signup</a>
 
 </body>
 </html>

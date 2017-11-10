@@ -11,7 +11,7 @@ a.two {color: #3110B6;}
 tr:hover{background-color:#F0DF3A}
 </style>
 </head>
-<body background="bg1.jpg">
+<body background="images/bg1.jpg">
 <h1 style="color:blue;text-align:center">Pick your operation</h1>
 <table bgcolor="#46E8DE"  align="center" cellspacing="5" width=300 border=2 >
 
