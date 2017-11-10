@@ -107,7 +107,7 @@ public class RecruitmentController {
 				return "error";
 			}
 
-			return "success";
+			return "login";
 		}
 	}
 }

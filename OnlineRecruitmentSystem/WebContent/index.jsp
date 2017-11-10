@@ -12,7 +12,7 @@ a.two:link {color:#004BAA;}
 a.two:hover {font-size:150%;}
 body
  {
-     background-image: url(index-background.jpg);
+     background-image: url(images/index-background.jpg);
      background-size: 100% 100%; 
      background-repeat: no-repeat;
  }
