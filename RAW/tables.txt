@@ -81,3 +81,15 @@ INSERT INTO CandidateWorkHistory values ('104','997','BENZ','MITTAL','01-JAN-200
 INSERT INTO CandidateWorkHistory values ('105','997','ROLLS-ROYCE','GADDAFI','01-JAN-2004','31-DEC-2009','9705867814','HUGH','SoftwareEngineer','Personal Reasons','TeamLead','SHUBHAM');
 INSERT INTO CandidateWorkHistory values ('106','981','FREAK-OUT','BILL','01-JAN-2006','31-DEC-2016','9705867814','DAN','Manager','Personal Reasons','TeamLead','PRATEEK');
 INSERT INTO CandidateWorkHistory values ('107','981','SWEAT-IT','TRUMPH','01-JAN-2002','31-DEC-2008','9705867814','GOKU','SeniorAnalyst','Personal Reasons','TeamLead','BANSAL');
+
+
+INSERT INTO job_requirements values ('51','101',5,'competitive environment','Pune','3','SoftwareEngineer','HSC');
+INSERT INTO job_requirements values ('52','102',7,'competitive environment','Chennai','3','SeniorSoftwareEngineer','SSC');
+INSERT INTO job_requirements values ('53','103',8,'competitive environment','Mumbai','3','SeniorAnalyst','BE');
+INSERT INTO job_requirements values ('54','104',10,'competitive environment','Hyderabad','3','SoftwareEngineer','Diploma');
+INSERT INTO job_requirements values ('55','105',15,'competitive environment','Bangalore','3','SeniorAnalyst','PG');
+INSERT INTO job_requirements values ('56','106',12,'competitive environment','Pune','3','SoftwareEngineer','PG');
+INSERT INTO job_requirements values ('57','107',3,'competitive environment','Chennai','3','Manager','Diploma');
+INSERT INTO job_requirements values ('58','108',7,'competitive environment','Mumbai','3','SoftwareEngineer','BE');
+INSERT INTO job_requirements values ('59','109',6,'competitive environment','Hyderabad','3','Manager','HSC');
+INSERT INTO job_requirements values ('60','110',4,'competitive environment','Bangalore','3','SeniorSoftwareEngineer','SSC');
