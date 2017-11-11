@@ -6,14 +6,14 @@ import java.util.List;
 public class Constant {
 	
 
-	public static List<String> getTypeList()
+	public static List<String> getUsers()
 	{
-		ArrayList<String> typeList=new ArrayList<String>();
-		typeList.add("User");
-		typeList.add("Company");
-		typeList.add("Admin");
+		List<String> users=new ArrayList<String>();
+		users.add("User");
+		users.add("Company");
+		users.add("Admin");
 		
-		return typeList;
+		return users;
 	}
 	
 	

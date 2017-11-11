@@ -78,7 +78,7 @@ public class RecruitmentController {
 	@RequestMapping("/showsignupform.htm")
 	public String showsignupPage(Model model) {
 
-		model.addAttribute("typeList", Constant.getTypeList());
+		model.addAttribute("typeList", Constant.getUsers());
 		model.addAttribute(LOGIN, new Login());
 		return "signup";
 	}
@@ -97,7 +97,7 @@ public class RecruitmentController {
 			@ModelAttribute(LOGIN) @Valid Login login, BindingResult result) {
 		if (result.hasErrors()) {
 
-			model.addAttribute("typeList", Constant.getTypeList());
+			model.addAttribute("typeList", Constant.getUsers());
 			return "signup";
 		} else {
 			try {
