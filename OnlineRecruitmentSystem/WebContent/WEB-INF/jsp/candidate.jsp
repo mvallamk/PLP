@@ -16,7 +16,7 @@ tr:hover{background-color:#F0DF3A}
 <table bgcolor="#46E8DE"  align="center" cellspacing="5" width=300 border=2 >
 
 <tr align=center valign=middle><td><a class="two" href="addresumeform.htm">Add Resume</a></td></tr>
-<tr align=center valign=middle><td><a class="two" href="modify.htm">Modify Resume</a></td></tr>
+<tr align=center valign=middle><td><a class="two" href="modifyresumeform.htm">Modify Resume</a></td></tr>
 <tr align=center valign=middle><td><a class="two" href="search.htm">Search Jobs</a></td></tr>
 <tr align=center valign=middle><td><a class="two" href="apply.htm">Apply for Jobs</a></td></tr>
 </table>

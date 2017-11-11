@@ -89,92 +89,9 @@
 
 </form:form>
 </c:if>
-<%-- 
-
-<c:if test="${candQual2 ne null }">
-<form:form modelAttribute="candQual2" method="post">
-<table border="1">
-<tr><th><form:label path="qualificationName">Qualification</form:label></th>
-<th><form:label path="specializationArea">Specialization Area</form:label></th>
-<th><form:label path="collegeName">Institution Name</form:label></th>
-<th><form:label path="universityName">University/Board</form:label></th>
-<th><form:label path="yearOfPassing">Year of Passing</form:label></th>
-<th><form:label path="percentage">Percentage</form:label></th></tr>
-
-<tr><td><form:select path="qualificationName"><form:options items="${qualList}"/></form:select><form:errors path="qualificationName"></form:errors></td>
-<td><form:input path="specializationArea" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="specializationArea"></form:errors></td>
-<td><form:input path="collegeName" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="collegeName"></form:errors></td>
-<td><form:input path="universityName" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="universityName"></form:errors></td>
-<td><form:input path="yearOfPassing" pattern="^[1-9]{1}[0-9]{3}$" required="TRUE" title="1999"></form:input><form:errors path="yearOfPassing"></form:errors></td>
-<td><form:input path="percentage" pattern="[0-9]{1,2}[.]{0,1}[0-9]{0,2}"
-						required="TRUE" title="99"></form:input><form:errors path="percentage"></form:errors></td>
-<td><input type="submit" value="Add more"/></td>
-</tr>
-</table>
 
 
-</form:form>
-</c:if>
-
-<c:if test="${candQual3 ne null }">
-<form:form modelAttribute="candQual3" method="post">
-<table border="1">
-<tr><th><form:label path="qualificationName">Qualification</form:label></th>
-<th><form:label path="specializationArea">Specialization Area</form:label></th>
-<th><form:label path="collegeName">Institution Name</form:label></th>
-<th><form:label path="universityName">University/Board</form:label></th>
-<th><form:label path="yearOfPassing">Year of Passing</form:label></th>
-<th><form:label path="percentage">Percentage</form:label></th></tr>
-
-<tr><td><form:select path="qualificationName"><form:options items="${qualList}"/></form:select><form:errors path="qualificationName"></form:errors></td>
-<td><form:input path="specializationArea" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="specializationArea"></form:errors></td>
-<td><form:input path="collegeName" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="collegeName"></form:errors></td>
-<td><form:input path="universityName" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="universityName"></form:errors></td>
-<td><form:input path="yearOfPassing" pattern="^[1-9]{1}[0-9]{3}$" required="TRUE" title="1999"></form:input><form:errors path="yearOfPassing"></form:errors></td>
-<td><form:input path="percentage" pattern="[0-9]{1,2}[.]{0,1}[0-9]{0,2}"
-						required="TRUE" title="99"></form:input><form:errors path="percentage"></form:errors></td>
-<td><input type="submit" value="Add more"/></td>
-</tr>
-</table>
-
-
-</form:form>
-</c:if>
-
-<c:if test="${candQual4 ne null }">
-<form:form modelAttribute="candQual4" method="post">
-<table border="1">
-<tr><th><form:label path="qualificationName">Qualification</form:label></th>
-<th><form:label path="specializationArea">Specialization Area</form:label></th>
-<th><form:label path="collegeName">Institution Name</form:label></th>
-<th><form:label path="universityName">University/Board</form:label></th>
-<th><form:label path="yearOfPassing">Year of Passing</form:label></th>
-<th><form:label path="percentage">Percentage</form:label></th></tr>
-
-<tr><td><form:select path="qualificationName"><form:options items="${qualList}"/></form:select><form:errors path="qualificationName"></form:errors></td>
-<td><form:input path="specializationArea" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="specializationArea"></form:errors></td>
-<td><form:input path="collegeName" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="collegeName"></form:errors></td>
-<td><form:input path="universityName" pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-						title="Only letters and ."></form:input><form:errors path="universityName"></form:errors></td>
-<td><form:input path="yearOfPassing" pattern="^[1-9]{1}[0-9]{3}$" required="TRUE" title="1999"></form:input><form:errors path="yearOfPassing"></form:errors></td>
-<td><form:input path="percentage" pattern="[0-9]{1,2}[.]{0,1}[0-9]{0,2}"
-						required="TRUE" title="99"></form:input><form:errors path="percentage"></form:errors></td>
-<td><input type="submit" value="Add more"/></td>
-</tr>
-</table>
-</form:form>
-</c:if> --%>
-
-
-<a href="modifyworkform.htm" >Modify Work History Details</a>
+<a href="modifyworkhistform.htm" >Modify Work History Details</a>
 <c:if test="${candWork ne null }">
 <h2>Enter Work History Details</h2>
 <form:form action="modifyworkhist.htm" modelAttribute="candWork" method="post">
