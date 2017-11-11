@@ -18,23 +18,43 @@ import com.cg.recruitment.entities.CandidateQualifications;
 import com.cg.recruitment.entities.CandidateWorkHistory;
 import com.cg.recruitment.entities.Login;
 import com.cg.recruitment.exception.RecruitmentException;
-import com.cg.recruitment.service.IServiceDao;
+import com.cg.recruitment.service.IRecruitmentService;
 import com.cg.recruitment.util.Constant;
+import com.cg.recruitment.util.DateUtility;
 
 @Controller
 public class RecruitmentController {
 
 	final String LOGIN = "login";
-	int status;
 	String candidateId = null;
 
 	@Autowired
-	IServiceDao service;
+	IRecruitmentService service;
 
+	/**
+	 * 
+	 * @param model
+	 * @return LOGIN.html
+	 */
 	@RequestMapping("/showloginform.htm")
 	public String showLoginPage(Model model) {
 
 		model.addAttribute(LOGIN, new Login());
+		return LOGIN;
+
+	}
+
+	/**
+	 * 
+	 * @param model
+	 * @return LOGIN.html
+	 */
+	@RequestMapping("/signout.htm")
+	public String signOut(Model model) {
+		Login login = new Login();
+		login.setLoginId(candidateId);
+		candidateId = null;
+		model.addAttribute(LOGIN, login);
 		return LOGIN;
 
 	}
@@ -161,12 +181,10 @@ public class RecruitmentController {
 			@ModelAttribute("candPers") CandidatePersonal candidatePersonal) {
 		try {
 			Date dateFromPage = candidatePersonal.getDob();
-			Date dateOfBirth = new Date(dateFromPage.getYear(),
-					dateFromPage.getMonth(), dateFromPage.getDate());
-			candidatePersonal.setDob(dateOfBirth);
+			candidatePersonal.setDob(DateUtility.parseDate(dateFromPage));
 
 			candidatePersonal.setCandidateId(candidateId);
-			service.candidPersonal(candidatePersonal);
+			service.addCandidatePersonalDetails(candidatePersonal);
 		} catch (RecruitmentException e) {
 			model.addAttribute("error", e.getMessage());
 			return "error";
@@ -208,7 +226,7 @@ public class RecruitmentController {
 		try {
 
 			candidateQualifications.setCandidateId(candidateId);
-			service.candidQualification(candidateQualifications);
+			service.addCandidateQualificationDetails(candidateQualifications);
 		} catch (RecruitmentException e) {
 			model.addAttribute("error", e.getMessage());
 			return "error";
@@ -248,18 +266,15 @@ public class RecruitmentController {
 			@ModelAttribute("candWork") CandidateWorkHistory candidateWorkHistory) {
 		try {
 
-			Date date2 = candidateWorkHistory.getEmploymentFrom();
-			Date date1 = candidateWorkHistory.getEmploymentTo();
-			@SuppressWarnings("deprecation")
-			Date employmentFrom = new Date(date2.getYear(), date2.getMonth(),
-					date2.getDate());
-			@SuppressWarnings("deprecation")
-			Date employmentTo = new Date(date1.getYear(), date1.getMonth(),
-					date1.getDate());
-			candidateWorkHistory.setEmploymentFrom(employmentFrom);
-			candidateWorkHistory.setEmploymentTo(employmentTo);
+			Date employmentFrom = candidateWorkHistory.getEmploymentFrom();
+			Date employmentTo = candidateWorkHistory.getEmploymentTo();
+
+			candidateWorkHistory.setEmploymentFrom(DateUtility
+					.parseDate(employmentFrom));
+			candidateWorkHistory.setEmploymentTo(DateUtility
+					.parseDate(employmentTo));
 			candidateWorkHistory.setCandidateId(candidateId);
-			service.candidWorkHistory(candidateWorkHistory);
+			service.addCandidateWorkHistoryDetails(candidateWorkHistory);
 		} catch (RecruitmentException e) {
 			model.addAttribute("error", e.getMessage());
 			return "error";
@@ -281,6 +296,11 @@ public class RecruitmentController {
 
 		return "modifyresume";
 
+	}
+
+	@RequestMapping("/backtocandidate.htm")
+	public String backToCandidate(Model model) {
+		return "candidate";
 	}
 
 	/**
@@ -314,9 +334,9 @@ public class RecruitmentController {
 	public String modifyPersonal(Model model,
 			@ModelAttribute("candPers") CandidatePersonal candidatePersonal)
 			throws RecruitmentException {
-		Date date2 = candidatePersonal.getDob();
-		Date date = new Date(date2.getYear(), date2.getMonth(), date2.getDate());
-		candidatePersonal.setDob(date);
+		Date dateOfBirth = candidatePersonal.getDob();
+
+		candidatePersonal.setDob(DateUtility.parseDate(dateOfBirth));
 
 		candidatePersonal.setCandidateId(candidateId);
 		service.modifycandidPersonal(candidatePersonal);
@@ -337,7 +357,7 @@ public class RecruitmentController {
 	public String modifyQualificationForm(Model model) {
 
 		CandidateQualifications candidateQualification = service
-				.getCandidateQualificationDetails("candidateId");
+				.getCandidateQualificationDetails(candidateId);
 		model.addAttribute("candQual", candidateQualification);
 
 		return "modifyresume";
@@ -400,15 +420,13 @@ public class RecruitmentController {
 			@ModelAttribute("candWork") CandidateWorkHistory candidateWorkHistory)
 			throws RecruitmentException {
 
-		Date date2 = candidateWorkHistory.getEmploymentFrom();
-		Date date1 = candidateWorkHistory.getEmploymentTo();
-		@SuppressWarnings("deprecation")
-		Date date = new Date(date2.getYear(), date2.getMonth(), date2.getDate());
-		@SuppressWarnings("deprecation")
-		Date datee = new Date(date1.getYear(), date1.getMonth(),
-				date1.getDate());
-		candidateWorkHistory.setEmploymentFrom(date);
-		candidateWorkHistory.setEmploymentTo(datee);
+		Date employmentFrom = candidateWorkHistory.getEmploymentFrom();
+		Date employmentTo = candidateWorkHistory.getEmploymentTo();
+
+		candidateWorkHistory.setEmploymentFrom(DateUtility
+				.parseDate(employmentFrom));
+		candidateWorkHistory.setEmploymentTo(DateUtility
+				.parseDate(employmentTo));
 		candidateWorkHistory.setCandidateId(candidateId);
 		service.modifycandidWorkHistory(candidateWorkHistory);
 

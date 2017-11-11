@@ -11,6 +11,7 @@ import com.cg.recruitment.entities.CandidatePersonal;
 import com.cg.recruitment.entities.CandidateQualifications;
 import com.cg.recruitment.entities.CandidateWorkHistory;
 import com.cg.recruitment.exception.RecruitmentException;
+import com.cg.recruitment.util.QueryMapper;
 
 @Repository
 @Transactional
@@ -65,8 +66,7 @@ public class UserDaoImpl implements IUserDao {
 	@Override
 	public CandidatePersonal getCandidatePersonalDetails(String candidateId) {
 		TypedQuery<CandidatePersonal> query = entityManager
-				.createQuery(
-						"select candidatePersonal From CandidatePersonal candidatePersonal where candidatePersonal.candidateId=:candID",
+				.createQuery(QueryMapper.getCandidatePersonalDetailsQuery,
 						CandidatePersonal.class);
 		query.setParameter("candID", candidateId);
 		CandidatePersonal candidate = query.getSingleResult();

@@ -12,7 +12,7 @@ import com.cg.recruitment.entities.Login;
 import com.cg.recruitment.exception.RecruitmentException;
 
 @Service
-public class ServiceDaoImpl implements IServiceDao {
+public class RecruitmentServiceImpl implements IRecruitmentService {
 
 	@Autowired
 	ILoginDao loginDAO;
@@ -46,20 +46,20 @@ public class ServiceDaoImpl implements IServiceDao {
 	}
 
 	@Override
-	public void candidPersonal(CandidatePersonal candPers)
+	public void addCandidatePersonalDetails(CandidatePersonal candPers)
 			throws RecruitmentException {
 		userDAO.candidPersonal(candPers);
 	}
 
 	@Override
-	public void candidQualification(CandidateQualifications candQual)
+	public void addCandidateQualificationDetails(CandidateQualifications candQual)
 			throws RecruitmentException {
 		userDAO.candidQualification(candQual);
 
 	}
 
 	@Override
-	public void candidWorkHistory(CandidateWorkHistory candHist)
+	public void addCandidateWorkHistoryDetails(CandidateWorkHistory candHist)
 			throws RecruitmentException {
 		userDAO.candidWorkHistory(candHist);
 

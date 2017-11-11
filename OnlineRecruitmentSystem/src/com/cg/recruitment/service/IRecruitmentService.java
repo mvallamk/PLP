@@ -6,7 +6,7 @@ import com.cg.recruitment.entities.CandidateWorkHistory;
 import com.cg.recruitment.entities.Login;
 import com.cg.recruitment.exception.RecruitmentException;
 
-public interface IServiceDao {
+public interface IRecruitmentService {
 
 	public abstract void signUp(Login loginSignup) throws RecruitmentException;
 
@@ -14,13 +14,13 @@ public interface IServiceDao {
 
 	boolean validateLoginDetails(String loginId, String password);
 
-	public abstract void candidPersonal(CandidatePersonal candpers)
+	public abstract void addCandidatePersonalDetails(CandidatePersonal candidatePersonal)
 			throws RecruitmentException;	
 
-	public abstract void candidQualification(CandidateQualifications candQual)
+	public abstract void addCandidateQualificationDetails(CandidateQualifications candidateQualifications)
 			throws RecruitmentException;
 
-	public abstract void candidWorkHistory(CandidateWorkHistory candHist)
+	public abstract void addCandidateWorkHistoryDetails(CandidateWorkHistory candidateWorkHistory)
 			throws RecruitmentException;
 
 	CandidatePersonal getCandidatePersonalDetails(String candidateId);
