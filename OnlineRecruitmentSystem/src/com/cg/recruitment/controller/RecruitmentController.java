@@ -1,6 +1,7 @@
 package com.cg.recruitment.controller;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -155,7 +156,7 @@ public class RecruitmentController {
 	@RequestMapping("/addresumeform.htm")
 	public String candidateAddResumeForm(Model model) {
 		return "addresume";
-
+		
 	}
 
 	/**
@@ -168,6 +169,7 @@ public class RecruitmentController {
 	@RequestMapping("/addpersonalform.htm")
 	public String addPersonalForm(Model model) {
 		model.addAttribute("candPers", new CandidatePersonal());
+		model.addAttribute("currentDate",Date.valueOf(LocalDate.now()));
 		return "addresume";
 	}
 
@@ -211,6 +213,7 @@ public class RecruitmentController {
 	public String addQualificationForm(Model model) {
 		model.addAttribute("qualifications", Constant.getQualifications());
 		model.addAttribute("candQual", new CandidateQualifications());
+		model.addAttribute("currentYear",LocalDate.now().getYear());
 		return "addresume";
 	}
 
@@ -252,6 +255,7 @@ public class RecruitmentController {
 	public String addWorkHistoryForm(Model model) {
 
 		model.addAttribute("candWork", new CandidateWorkHistory());
+		model.addAttribute("currentDate",Date.valueOf(LocalDate.now()));
 		return "addresume";
 	}
 
@@ -304,6 +308,7 @@ public class RecruitmentController {
 
 	@RequestMapping("/backtocandidate.htm")
 	public String backToCandidate(Model model) {
+		
 		return "candidate";
 	}
 
@@ -322,6 +327,7 @@ public class RecruitmentController {
 		CandidatePersonal candidatePersonal = service
 				.getCandidatePersonalDetails(candidateId);
 		model.addAttribute("candPers", candidatePersonal);
+		model.addAttribute("currentDate",Date.valueOf(LocalDate.now()));
 
 		return "modifyresume";
 	}
@@ -365,6 +371,8 @@ public class RecruitmentController {
 		CandidateQualifications candidateQualification = service
 				.getCandidateQualificationDetails(candidateId);
 		model.addAttribute("candQual", candidateQualification);
+		model.addAttribute("currentYear",LocalDate.now().getYear());
+		model.addAttribute("qualifications",Constant.getQualifications());
 
 		return "modifyresume";
 	}
@@ -407,7 +415,7 @@ public class RecruitmentController {
 		CandidateWorkHistory candidateWorkHistory = service
 				.getCandidateWorkHistoryDetails(candidateId);
 		model.addAttribute("candWork", candidateWorkHistory);
-
+		model.addAttribute("currentDate",Date.valueOf(LocalDate.now()));
 		return "modifyresume";
 	}
 

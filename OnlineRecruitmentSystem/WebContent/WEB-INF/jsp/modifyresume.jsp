@@ -20,12 +20,14 @@ a.two:hover {
 	font-size: 150%;
 }
 </style>
+<script type="text/javascript" src="javascript/validations.js"></script>
 </head>
 <body background="images/bg1.jpg">
 
-	<h1 style="font-size:300%;text-align: center">Resume</h1>
+	<h1 style="font-size: 300%; text-align: center">Resume</h1>
 
-	<a  class="two" href="modifypersonalform.htm">Modify Personal Details</a>
+	<a class="two" href="modifypersonalform.htm">Modify Personal
+		Details</a>
 
 	<c:if test="${candPers ne null}">
 		<form:form action="modifypersonal.htm" modelAttribute="candPers"
@@ -47,8 +49,8 @@ a.two:hover {
 
 				<tr>
 					<td><form:label path="dob">Date of Birth</form:label></td>
-					<td><form:input type="date" path="dob"></form:input> <form:errors
-							path="dob"></form:errors></td>
+					<td><form:input type="date" path="dob" max="${currentDate}"></form:input>
+						<form:errors path="dob"></form:errors></td>
 				</tr>
 
 				<tr>
@@ -100,7 +102,8 @@ a.two:hover {
 	<br>
 	<br>
 	<br>
-	<a class="two" href="modifyqualform.htm">Modify Qualification Details</a>
+	<a class="two" href="modifyqualform.htm">Modify Qualification
+		Details</a>
 	<c:if test="${candQual ne null }">
 		<h2 style="text-align: center">Enter Qualification Details</h2>
 		<form:form action="modifyqual.htm" modelAttribute="candQual"
@@ -118,23 +121,22 @@ a.two:hover {
 				<tr align=center valign=middle>
 					<td><form:select path="qualificationName">
 							<form:options items="${qualifications}" />
-						</form:select>
-						<form:errors path="qualificationName"></form:errors></td>
+						</form:select> <form:errors path="qualificationName"></form:errors></td>
 					<td><form:input path="specializationArea"
 							pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-							title="Only letters and ."></form:input>
-						<form:errors path="specializationArea"></form:errors></td>
+							title="Only letters and ."></form:input> <form:errors
+							path="specializationArea"></form:errors></td>
 					<td><form:input path="collegeName"
 							pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-							title="Only letters and ."></form:input>
-						<form:errors path="collegeName"></form:errors></td>
+							title="Only letters and ."></form:input> <form:errors
+							path="collegeName"></form:errors></td>
 					<td><form:input path="universityName"
 							pattern="^[A-Za-z]{1}[A-Za-z. ]{1,}$" required="TRUE"
-							title="Only letters and ."></form:input>
-						<form:errors path="universityName"></form:errors></td>
-					<td><form:input path="yearOfPassing"
-							pattern="^[1-9]{1}[0-9]{3}$" required="TRUE" title="1999"></form:input>
-						<form:errors path="yearOfPassing"></form:errors></td>
+							title="Only letters and ."></form:input> <form:errors
+							path="universityName"></form:errors></td>
+					<td><form:input path="yearOfPassing" max="${currentYear}"
+							type="number" pattern="^[1-9]{1}[0-9]{3}$" required="TRUE"
+							title="1999"></form:input> <form:errors path="yearOfPassing"></form:errors></td>
 					<td><form:input path="percentage"
 							pattern="[0-9]{1,2}[.]{0,1}[0-9]{0,2}" required="TRUE" title="99"></form:input>
 						<form:errors path="percentage"></form:errors></td>
@@ -147,18 +149,20 @@ a.two:hover {
 
 		</form:form>
 	</c:if>
-	
+
 	<br>
 	<br>
 	<br>
 	<br>
 
 
-	<a class="two" href="modifyworkhistform.htm">Modify Work History Details</a>
+	<a class="two" href="modifyworkhistform.htm">Modify Work History
+		Details</a>
 	<c:if test="${candWork ne null }">
 		<h2 style="text-align: center">Enter Work History Details</h2>
-		<form:form action="modifyworkhist.htm" modelAttribute="candWork"
-			method="post">
+		<form:form name="workHistory" action="modifyworkhist.htm"
+			modelAttribute="candWork" method="post"
+			onsubmit="return validationsWorkDates()">
 			<table bgcolor="#E4E47C" cellspacing="5" align="center" border="1">
 				<tr align=center valign=middle>
 					<td><form:label path="whichEmployer">Previous Employer</form:label></td>
@@ -187,13 +191,15 @@ a.two:hover {
 				</tr>
 				<tr align=center valign=middle>
 					<td><form:label path="employmentFrom">Employment from </form:label></td>
-					<td><form:input type="date" path="employmentFrom"></form:input>
-						<form:errors path="employmentFrom"></form:errors></td>
+					<td><form:input type="date" path="employmentFrom"
+							max="${currentDate}" name="employmentFrom"></form:input> <form:errors
+							path="employmentFrom"></form:errors></td>
 				</tr>
 				<tr align=center valign=middle>
 					<td><form:label path="employmentTo">Employment to</form:label></td>
-					<td><form:input type="date" path="employmentTo"></form:input>
-						<form:errors path="employmentTo"></form:errors></td>
+					<td><form:input type="date" path="employmentTo"
+							max="${currentDate}" name="employmentTo"></form:input> <form:errors
+							path="employmentTo"></form:errors></td>
 				</tr>
 				<tr align=center valign=middle>
 					<td><form:label path="reasonForLeaving">Reasons for Leaving</form:label></td>
@@ -229,7 +235,7 @@ a.two:hover {
 			</table>
 		</form:form>
 	</c:if>
-	
+
 	<br>
 	<br>
 	<br>
