@@ -6,8 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+a.two:link {
+	color: #004BAA;
+}
+
+a.two:hover {
+	font-size: 150%;
+}
+</style>
 </head>
-<body>
+<body background="images/bg1.jpg">
 	<center>
 		<h2>The jobs that matched your criteria</h2>
 		<table>
@@ -30,13 +39,14 @@
 						<td>${job.qualificationRequired}</td>
 						<td>${job.jobLocation}</td>
 						<td>${job.jobDescription}</td>
-						<td><a href="apply.htm?jobID=${job.jobID}&&companyId=${job.companyId}">Apply</a></td>
+						<td><a
+							href="apply.htm?jobID=${job.jobID}&&companyId=${job.companyId}">Apply</a></td>
 					</tr>
 				</c:forEach>
 		</table>
 	</center>
 	<h3>
-		<a href="signout.htm">Sign Out</a>
+		<a class="two" href="signout.htm">Sign Out</a>
 	</h3>
 </body>
 </html>
