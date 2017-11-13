@@ -27,5 +27,17 @@ public class Constant {
 		return qualifications;
 
 	}
+	
+	public static List<String> getCities()
+	{
+		List<String> cities=new ArrayList<String>();
+		cities.add("Pune");
+		cities.add("Hyderabad");
+		cities.add("Bangalore");
+		cities.add("Mumbai");
+		cities.add("Chennai");
+		return cities;
+		
+	}
 
 }

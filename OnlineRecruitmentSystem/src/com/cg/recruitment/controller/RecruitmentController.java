@@ -1,6 +1,7 @@
 package com.cg.recruitment.controller;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cg.recruitment.entities.CandidatePersonal;
 import com.cg.recruitment.entities.CandidateQualifications;
 import com.cg.recruitment.entities.CandidateWorkHistory;
+import com.cg.recruitment.entities.JobApplied;
+import com.cg.recruitment.entities.JobRequirements;
 import com.cg.recruitment.entities.Login;
 import com.cg.recruitment.exception.RecruitmentException;
 import com.cg.recruitment.service.IRecruitmentService;
@@ -69,10 +72,11 @@ public class RecruitmentController {
 	 * @param loginId
 	 * @param password
 	 * @return success.jsp
+	 * @throws RecruitmentException 
 	 */
 	@RequestMapping(value = "/checklogin.htm", method = RequestMethod.POST)
 	public String login(Model model, @RequestParam("loginId") String loginId,
-			@RequestParam("password") String password) {
+			@RequestParam("password") String password) throws RecruitmentException {
 		Login login = new Login();
 		login.setLoginId(loginId);
 		login.setPassword(password);
@@ -310,9 +314,10 @@ public class RecruitmentController {
 	 *
 	 * @param model
 	 * @return modifyresume.jsp
+	 * @throws RecruitmentException 
 	 */
 	@RequestMapping("/modifypersonalform.htm")
-	public String modifyPersonalForm(Model model) {
+	public String modifyPersonalForm(Model model) throws RecruitmentException {
 
 		CandidatePersonal candidatePersonal = service
 				.getCandidatePersonalDetails(candidateId);
@@ -352,9 +357,10 @@ public class RecruitmentController {
 	 * 
 	 * @param model
 	 * @return modifyresume.jsp
+	 * @throws RecruitmentException 
 	 */
 	@RequestMapping("/modifyqualform.htm")
-	public String modifyQualificationForm(Model model) {
+	public String modifyQualificationForm(Model model) throws RecruitmentException {
 
 		CandidateQualifications candidateQualification = service
 				.getCandidateQualificationDetails(candidateId);
@@ -393,9 +399,10 @@ public class RecruitmentController {
 	 * 
 	 * @param model
 	 * @return modifyresume.jsp
+	 * @throws RecruitmentException 
 	 */
 	@RequestMapping("/modifyworkhistform.htm")
-	public String modifyWorkHistoryForm(Model model) {
+	public String modifyWorkHistoryForm(Model model) throws RecruitmentException {
 
 		CandidateWorkHistory candidateWorkHistory = service
 				.getCandidateWorkHistoryDetails(candidateId);
@@ -433,5 +440,78 @@ public class RecruitmentController {
 		model.addAttribute("candWork", null);
 		return "modifyresume";
 	}
+	
+	@RequestMapping("/search.htm")
+	public String searchBy(Model model) {
 
+		model.addAttribute("jobRequirements1", new JobRequirements());
+		model.addAttribute("jobRequirements2", new JobRequirements());
+		model.addAttribute("jobRequirements3", new JobRequirements());
+		model.addAttribute("jobRequirements4", new JobRequirements());
+		model.addAttribute("qualifications", Constant.getQualifications());
+		model.addAttribute("cities", Constant.getCities());
+		return "searchjobs";
+
+	}
+
+	@RequestMapping(value = "/byqualification.htm", method = RequestMethod.POST)
+	public String searchByQualification(
+			@ModelAttribute("jobRequirements1") JobRequirements jobRequirements,
+			Model model) {
+		String qualification = jobRequirements.getQualificationRequired();
+		List<JobRequirements> jobs = service.getJobByQual(qualification);
+		model.addAttribute("jobs", jobs);
+		return "jobs";
+
+	}
+
+	@RequestMapping(value = "/byposition.htm", method = RequestMethod.POST)
+	public String searchByPosition(
+			@ModelAttribute("jobRequirements2") JobRequirements jobRequirements,
+			Model model) {
+		String position = jobRequirements.getPositionRequired();
+		List<JobRequirements> jobs = service.getJobByPosition(position);
+		model.addAttribute("jobs", jobs);
+		return "jobs";
+
+	}
+
+	@RequestMapping(value = "/byexperience.htm", method = RequestMethod.POST)
+	public String searchByExperience(
+			@ModelAttribute("jobRequirements3") JobRequirements jobRequirements,
+			Model model) {
+		int experience = jobRequirements.getExperienceRequired();
+		List<JobRequirements> jobs = service.getJobByExperience(experience);
+		model.addAttribute("jobs", jobs);
+		return "jobs";
+
+	}
+
+	@RequestMapping(value = "/bylocation.htm", method = RequestMethod.POST)
+	public String searchByLocation(
+			@ModelAttribute("jobRequirements4") JobRequirements jobRequirements,
+			Model model) {
+		String location = jobRequirements.getJobLocation();
+		List<JobRequirements> jobs = service.getJobByLocation(location);
+		model.addAttribute("jobs", jobs);
+		return "jobs";
+
+	}
+
+	@RequestMapping("/apply.htm")
+	public String applyForJob(@RequestParam("jobID") String jobID,
+			@RequestParam("companyId") String companyId, Model model) {
+		JobApplied jobApplied=new JobApplied();
+		jobApplied.setCandidateId("MOH13619");
+		jobApplied.setJobId(jobID);
+		jobApplied.setCompId(companyId);
+		
+		try {
+			service.insertApplyJob(jobApplied);
+			model.addAttribute("message","Successfully applied for the job with ID:"+jobID);
+		} catch (RecruitmentException e) {
+			e.printStackTrace();
+		}
+		return "candidate";
+	}
 }

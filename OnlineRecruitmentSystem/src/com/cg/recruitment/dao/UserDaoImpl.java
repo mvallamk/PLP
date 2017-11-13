@@ -64,25 +64,41 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public CandidatePersonal getCandidatePersonalDetails(String candidateId) {
+	public CandidatePersonal getCandidatePersonalDetails(String candidateId) throws RecruitmentException {
+		try
+		{
 		TypedQuery<CandidatePersonal> query = entityManager
 				.createQuery(QueryMapper.getCandidatePersonalDetailsQuery,
 						CandidatePersonal.class);
 		query.setParameter("candID", candidateId);
 		CandidatePersonal candidate = query.getSingleResult();
 		return candidate;
+		}
+		catch(Exception e)
+		{
+			throw new RecruitmentException("Cannot Fetch Candidate Personal Details");
+		}
+	
 	}
 
 	@Override
 	public CandidatePersonal modifycandidPersonal(
-			CandidatePersonal candidatePersonal) {
+			CandidatePersonal candidatePersonal) throws RecruitmentException {
+		try
+		{
 		return entityManager.merge(candidatePersonal);
-
+		}
+		catch(Exception e)
+		{
+			throw new RecruitmentException("Cannot Modify Candidate Personal Details");
+		}
 	}
 
 	@Override
 	public CandidateQualifications getCandidateQualificationDetails(
-			String candidateId) {
+			String candidateId) throws RecruitmentException {
+		try
+		{
 		TypedQuery<CandidateQualifications> query = entityManager
 				.createQuery(
 						"select candidateQualifications From CandidateQualifications candidateQualifications where candidateQualifications.candidateId=:candID",
@@ -90,18 +106,32 @@ public class UserDaoImpl implements IUserDao {
 		query.setParameter("candID", candidateId);
 		CandidateQualifications candidate = query.getSingleResult();
 		return candidate;
+		}
+		catch(Exception e)
+		{
+			throw new RecruitmentException("Cannot Modify Candidate Personal Details");
+		}
 	}
 
 	@Override
 	public CandidateQualifications modifycandidQualifications(
-			CandidateQualifications candidateQualifications) {
+			CandidateQualifications candidateQualifications) throws RecruitmentException {
+		try
+		{
 		return entityManager.merge(candidateQualifications);
+		}
+		catch(Exception e)
+		{
+			throw new RecruitmentException("Cannot Modify Candidate Personal Details");
+		}
 	}
 
 	@Override
 	public CandidateWorkHistory getCandidateWorkHistoryDetails(
-			String candidateId) {
+			String candidateId) throws RecruitmentException {
 
+		try
+		{
 		TypedQuery<CandidateWorkHistory> query = entityManager
 				.createQuery(
 						"select candidateWorkHistory From CandidateWorkHistory candidateWorkHistory where candidateWorkHistory.candidateId=:candID",
@@ -110,13 +140,24 @@ public class UserDaoImpl implements IUserDao {
 		CandidateWorkHistory candidate = query.getSingleResult();
 
 		return candidate;
-
+		}
+		catch(Exception e)
+		{
+			throw new RecruitmentException("Cannot Modify Candidate Personal Details");
+		}
 	}
 
 	@Override
 	public CandidateWorkHistory modifycandidWorkHistory(
-			CandidateWorkHistory candidateWorkHistory) {
+			CandidateWorkHistory candidateWorkHistory) throws RecruitmentException {
+		try
+		{
 		return entityManager.merge(candidateWorkHistory);
+		}
+		catch(Exception e)
+		{
+			throw new RecruitmentException("Cannot Modify Candidate Personal Details");
+		}
 	}
 
 }

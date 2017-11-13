@@ -28,9 +28,14 @@ public class LoginDaoImpl implements ILoginDao {
 	}
 
 	@Override
-	public Login getLoginDetails(String loginId) {
+	public Login getLoginDetails(String loginId) throws RecruitmentException {
 
-		return entityManager.find(Login.class, loginId);
+		
+		try {
+			return entityManager.find(Login.class, loginId);
+		} catch (Exception e) {
+			throw new RecruitmentException("Cannot get Login Details");
+		}
 	}
 
 }

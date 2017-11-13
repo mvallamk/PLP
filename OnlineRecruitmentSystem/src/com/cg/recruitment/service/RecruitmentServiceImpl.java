@@ -1,13 +1,18 @@
 package com.cg.recruitment.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.recruitment.dao.ILoginDao;
+import com.cg.recruitment.dao.IRecruitmentDAO;
 import com.cg.recruitment.dao.IUserDao;
 import com.cg.recruitment.entities.CandidatePersonal;
 import com.cg.recruitment.entities.CandidateQualifications;
 import com.cg.recruitment.entities.CandidateWorkHistory;
+import com.cg.recruitment.entities.JobApplied;
+import com.cg.recruitment.entities.JobRequirements;
 import com.cg.recruitment.entities.Login;
 import com.cg.recruitment.exception.RecruitmentException;
 
@@ -19,9 +24,12 @@ public class RecruitmentServiceImpl implements IRecruitmentService {
 
 	@Autowired
 	IUserDao userDAO;
+	
+	@Autowired
+	IRecruitmentDAO recruitmentDAOImpl;
 
 	@Override
-	public Login getLoginDetails(String loginId) {
+	public Login getLoginDetails(String loginId) throws RecruitmentException {
 		return loginDAO.getLoginDetails(loginId);
 	}
 
@@ -32,7 +40,7 @@ public class RecruitmentServiceImpl implements IRecruitmentService {
 	}
 
 	@Override
-	public boolean validateLoginDetails(String loginId, String password) {
+	public boolean validateLoginDetails(String loginId, String password) throws RecruitmentException {
 
 		if (loginDAO.getLoginDetails(loginId) == null)
 			return false;
@@ -66,27 +74,27 @@ public class RecruitmentServiceImpl implements IRecruitmentService {
 	}
 
 	@Override
-	public CandidatePersonal getCandidatePersonalDetails(String candidateId) {
+	public CandidatePersonal getCandidatePersonalDetails(String candidateId) throws RecruitmentException {
 		return userDAO.getCandidatePersonalDetails(candidateId);
 	}
 
 	@Override
 	public CandidatePersonal modifycandidPersonal(
-			CandidatePersonal candidatePersonal) {
+			CandidatePersonal candidatePersonal) throws RecruitmentException {
 
 		return userDAO.modifycandidPersonal(candidatePersonal);
 	}
 
 	@Override
 	public CandidateQualifications getCandidateQualificationDetails(
-			String candidateId) {
+			String candidateId) throws RecruitmentException {
 
 		return userDAO.getCandidateQualificationDetails(candidateId);
 	}
 
 	@Override
 	public CandidateQualifications modifycandidQualifications(
-			CandidateQualifications candidateQualifications) {
+			CandidateQualifications candidateQualifications) throws RecruitmentException {
 
 		return userDAO.modifycandidQualifications(candidateQualifications);
 
@@ -94,16 +102,40 @@ public class RecruitmentServiceImpl implements IRecruitmentService {
 
 	@Override
 	public CandidateWorkHistory getCandidateWorkHistoryDetails(
-			String candidateId) {
+			String candidateId) throws RecruitmentException {
 
 		return userDAO.getCandidateWorkHistoryDetails(candidateId);
 	}
 
 	@Override
 	public CandidateWorkHistory modifycandidWorkHistory(
-			CandidateWorkHistory candidateWorkHistory) {
+			CandidateWorkHistory candidateWorkHistory) throws RecruitmentException {
 
 		return userDAO.modifycandidWorkHistory(candidateWorkHistory);
 	}
+	@Override
+	public void insertApplyJob(JobApplied jobApplied)
+			throws RecruitmentException {
+		recruitmentDAOImpl.insertApplyJob(jobApplied);
+	}
+	
+	@Override
+	public List<JobRequirements> getJobByLocation(String loc) {
 
+		return recruitmentDAOImpl.getJobByLocation(loc);
+	}
+	@Override
+	public List<JobRequirements> getJobByExperience(int exp) {
+
+		return recruitmentDAOImpl.getJobByExperience(exp);
+	}
+	@Override
+	public List<JobRequirements> getJobByPosition(String pos) {
+
+		return recruitmentDAOImpl.getJobByPosition(pos);
+	}
+	@Override
+	public List<JobRequirements> getJobByQual(String qual) {
+		return recruitmentDAOImpl.getJobByQual(qual);
+	}
 }

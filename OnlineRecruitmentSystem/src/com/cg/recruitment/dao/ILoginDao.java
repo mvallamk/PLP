@@ -8,7 +8,7 @@ public interface ILoginDao {
 	
 	
 	public abstract void signUp(Login loginSignup) throws RecruitmentException;
-	public abstract Login getLoginDetails(String loginId);
+	public abstract Login getLoginDetails(String loginId) throws RecruitmentException;
 
 
 }

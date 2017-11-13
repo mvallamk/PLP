@@ -16,20 +16,20 @@ public interface IUserDao {
 	public abstract void candidWorkHistory(CandidateWorkHistory candHist)
 			throws RecruitmentException;
 
-	CandidatePersonal getCandidatePersonalDetails(String candidateId);
+	CandidatePersonal getCandidatePersonalDetails(String candidateId) throws RecruitmentException;
 
 	public abstract CandidatePersonal modifycandidPersonal(
-			CandidatePersonal candidatePersonal);
+			CandidatePersonal candidatePersonal) throws RecruitmentException;
 
 	public abstract CandidateQualifications getCandidateQualificationDetails(
-			String candidateId);
+			String candidateId) throws RecruitmentException;
 
 	public abstract CandidateQualifications modifycandidQualifications(
-			CandidateQualifications candidateQualifications);
+			CandidateQualifications candidateQualifications) throws RecruitmentException;
 
 	public abstract CandidateWorkHistory getCandidateWorkHistoryDetails(
-			String candidateId);
+			String candidateId) throws RecruitmentException;
 
 	public abstract CandidateWorkHistory modifycandidWorkHistory(
-			CandidateWorkHistory candidateWorkHistory);
+			CandidateWorkHistory candidateWorkHistory) throws RecruitmentException;
 }
