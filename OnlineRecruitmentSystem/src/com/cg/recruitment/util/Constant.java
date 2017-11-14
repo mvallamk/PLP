@@ -5,17 +5,14 @@ import java.util.List;
 
 public class Constant {
 
-
-	public static List<String> getUsers()
-	{
-		List<String> users=new ArrayList<String>();
+	public static List<String> getUsers() {
+		List<String> users = new ArrayList<String>();
 		users.add("User");
 		users.add("Company");
 		users.add("Admin");
-		
+
 		return users;
 	}
-
 
 	public static List<String> getQualifications() {
 		List<String> qualifications = new ArrayList<String>();
@@ -27,17 +24,16 @@ public class Constant {
 		return qualifications;
 
 	}
-	
-	public static List<String> getCities()
-	{
-		List<String> cities=new ArrayList<String>();
+
+	public static List<String> getCities() {
+		List<String> cities = new ArrayList<String>();
 		cities.add("Pune");
 		cities.add("Hyderabad");
 		cities.add("Bangalore");
 		cities.add("Mumbai");
 		cities.add("Chennai");
 		return cities;
-		
+
 	}
 
 }

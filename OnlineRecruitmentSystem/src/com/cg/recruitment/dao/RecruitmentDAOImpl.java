@@ -25,6 +25,10 @@ public class RecruitmentDAOImpl implements IRecruitmentDAO {
 			.getLogger(com.cg.recruitment.dao.RecruitmentDAOImpl.class);
 
 	@Override
+	/**
+	 * When the user selects search jobs by qualification in searchjobs.jsp,the program 
+	 * is directed here and the list of jobs matching the criteria is fetched from database.
+	 */
 	public List<JobRequirements> getJobByQual(String qual) {
 		TypedQuery<JobRequirements> query = entityManager
 				.createQuery(
@@ -37,6 +41,10 @@ public class RecruitmentDAOImpl implements IRecruitmentDAO {
 	}
 
 	@Override
+	/**
+	 * When the user selects search jobs by position in searchjobs.jsp,the program 
+	 * is directed here and the list of jobs matching the criteria is fetched from database.
+	 */
 	public List<JobRequirements> getJobByPosition(String pos) {
 		TypedQuery<JobRequirements> query = entityManager
 				.createQuery(
@@ -49,6 +57,10 @@ public class RecruitmentDAOImpl implements IRecruitmentDAO {
 	}
 
 	@Override
+	/**
+	 * When the user selects search jobs by Experience in searchjobs.jsp,the program 
+	 * is directed here and the list of jobs matching the criteria is fetched from database.
+	 */
 	public List<JobRequirements> getJobByExperience(int exp) {
 		TypedQuery<JobRequirements> query = entityManager
 				.createQuery(
@@ -61,6 +73,10 @@ public class RecruitmentDAOImpl implements IRecruitmentDAO {
 	}
 
 	@Override
+	/**
+	 * When the user selects search jobs by location in searchjobs.jsp,the program 
+	 * is directed here and the list of jobs matching the criteria is fetched from database.
+	 */
 	public List<JobRequirements> getJobByLocation(String loc) {
 		TypedQuery<JobRequirements> query = entityManager
 				.createQuery(
@@ -73,6 +89,10 @@ public class RecruitmentDAOImpl implements IRecruitmentDAO {
 	}
 
 	@Override
+	/**
+	 * When the user selects Apply option in jobs.jsp,the program is directed here 
+	 * and the selected job details will be saved into database.
+	 */
 	public void insertApplyJob(JobApplied jobApplied)
 			throws RecruitmentException {
 
