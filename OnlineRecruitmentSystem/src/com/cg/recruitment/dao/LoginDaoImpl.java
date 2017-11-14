@@ -3,6 +3,7 @@ package com.cg.recruitment.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,12 +17,17 @@ public class LoginDaoImpl implements ILoginDao {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	private static Logger logger = Logger
+			.getLogger(com.cg.recruitment.dao.LoginDaoImpl.class);
+
 	@Override
 	public void signUp(Login loginSignup) throws RecruitmentException {
 		try {
 			entityManager.persist(loginSignup);
 			entityManager.flush();
+			logger.info("Sign Up details are saved successfully");
 		} catch (Exception e) {
+			logger.info("sign up unsuccessful");
 			throw new RecruitmentException(
 					"UserId already taken. Try Another Id.");
 		}
@@ -30,11 +36,13 @@ public class LoginDaoImpl implements ILoginDao {
 	@Override
 	public Login getLoginDetails(String loginId) throws RecruitmentException {
 
-		
 		try {
+			logger.info("Fetch operation for login details begins");
 			return entityManager.find(Login.class, loginId);
+			
 		} catch (Exception e) {
-			throw new RecruitmentException("Cannot get Login Details");
+			logger.info("Fetch operation for login details unsuccessful");
+			throw new RecruitmentException("Cannot get Login Details");			
 		}
 	}
 
