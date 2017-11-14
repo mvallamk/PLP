@@ -21,6 +21,11 @@ public class UserDaoImpl implements IUserDao {
 	EntityManager entityManager;
 
 	@Override
+	/**
+	 * When the user clicks on save personal details in resume from the program is
+	 * directed here and it if there is some error it throws Recruitment Exception
+	 * @throws recruitment Exception
+	 */
 	public void candidPersonal(CandidatePersonal candPers)
 			throws RecruitmentException {
 		try {
@@ -35,6 +40,11 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 *  When the user clicks on save Qualification details in resume from the program is
+	 * directed here and it if there is some error it throws Recruitment Exception
+	 * @throws recruitment Exception
+	 */
 	public void candidQualification(CandidateQualifications candQual)
 			throws RecruitmentException {
 		System.out.println(candQual);
@@ -50,6 +60,12 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 *  When the user clicks on save Work History Details details in resume from
+	 *   the program is directed here and it if there is some error it throws 
+	 *   Recruitment Exception
+	 * @throws recruitment Exception
+	 */
 	public void candidWorkHistory(CandidateWorkHistory candHist)
 			throws RecruitmentException {
 		try {
@@ -64,6 +80,12 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 * When user selects modify personal details the program is directed here and 
+	 * the personal details are fetched from data base and if it faces an error it throws
+	 * recruitment Exception
+	 * @throws recruitment Exception
+	 */
 	public CandidatePersonal getCandidatePersonalDetails(String candidateId)
 			throws RecruitmentException {
 		try {
@@ -81,6 +103,12 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 * When the user makes changes and clicks on save in modify personal details 
+	 * the program is directed here and the modified details are updated here and
+	 * if it faces an error it throws recruitment Exception.
+	 * @throws Recruitment Exception
+	 */
 	public CandidatePersonal modifycandidPersonal(
 			CandidatePersonal candidatePersonal) throws RecruitmentException {
 		try {
@@ -92,6 +120,12 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 * * When user selects modify Qualification details the program is directed here and 
+	 * the Qualification details are fetched from data base and if it faces an error it
+	 *  throws recruitment Exception
+	 * @throws recruitment Exception
+	 */
 	public CandidateQualifications getCandidateQualificationDetails(
 			String candidateId) throws RecruitmentException {
 		try {
@@ -109,6 +143,12 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 * When the user makes changes and clicks on save in modify Qualification details 
+	 * the program is directed here and the modified details are updated here and
+	 * if it faces an error it throws recruitment Exception.
+	 * @throws Recruitment Exception
+	 */
 	public CandidateQualifications modifycandidQualifications(
 			CandidateQualifications candidateQualifications)
 			throws RecruitmentException {
@@ -121,6 +161,12 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 * When user selects modify Work History details the program is directed here and 
+	 * the Work History details are fetched from data base and if it faces an error it
+	 *  throws recruitment Exception
+	 * @throws recruitment Exception
+	 */
 	public CandidateWorkHistory getCandidateWorkHistoryDetails(
 			String candidateId) throws RecruitmentException {
 
@@ -140,6 +186,12 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
+	/**
+	 *  When the user makes changes and clicks on save in modify Work History details 
+	 * the program is directed here and the modified details are updated here and
+	 * if it faces an error it throws recruitment Exception.
+	 * @throws Recruitment Exception
+	 */
 	public CandidateWorkHistory modifycandidWorkHistory(
 			CandidateWorkHistory candidateWorkHistory)
 			throws RecruitmentException {

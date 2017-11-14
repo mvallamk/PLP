@@ -17,6 +17,11 @@ public class LoginDaoImpl implements ILoginDao {
 	EntityManager entityManager;
 
 	@Override
+	/**
+	 * When the user registers with valid credentials,the credentials will be saved
+	 * by this method,but if the user_id is already taken the it throws an exception
+	 * @throws Recruitment Exception
+	 */
 	public void signUp(Login loginSignup) throws RecruitmentException {
 		try {
 			entityManager.persist(loginSignup);
@@ -28,6 +33,10 @@ public class LoginDaoImpl implements ILoginDao {
 	}
 
 	@Override
+	/**
+	 * When the user is loging in then this method checks if the credentials are valid or not
+	 * @throws recruitment Exception
+	 */
 	public Login getLoginDetails(String loginId) throws RecruitmentException {
 
 		
